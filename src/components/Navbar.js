@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <Nav>
       <NavCenter>
-        <NavTitle>Checkout System</NavTitle>
+        <NavTitle>MJOW1999 Checkout System</NavTitle>
         <NavContainer>
           <Cart width={"40px"} />
           {totalItems > 0 && (

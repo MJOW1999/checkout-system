@@ -8,7 +8,7 @@ const BasketWrapper = () => {
   return (
     <Wrapper>
       <header>
-        <h2>Available Items</h2>
+        <HeaderTitle>Available Items</HeaderTitle>
       </header>
       <section>
         {basketItems?.map((item) => {
@@ -26,13 +26,15 @@ const BasketWrapper = () => {
           );
         })}
       </section>
-      <footer>
+      <Footer>
+        <hr />
         <article>
           <BasketTotal>
             Total: <span>£{totalPrice.toFixed(2)}</span>
           </BasketTotal>
         </article>
-      </footer>
+        <article></article>
+      </Footer>
     </Wrapper>
   );
 };
@@ -42,14 +44,25 @@ const Wrapper = styled.section`
   width: 90vw;
   margin: 0 auto;
   margin-top: 40px;
-  padding: 2.5rem 0;
+  padding-bottom: 2.5rem;
   max-width: 50rem;
 `;
 
+const HeaderTitle = styled.h2`
+  font-size: 2vmax;
+  text-decoration: underline;
+  padding-bottom: 2vh;
+`;
+
+const Footer = styled.footer`
+  margin-top: 4rem;
+  text-align: center;
+`;
 const BasketTotal = styled.h4`
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  font-size: 2.5vmax;
 `;
 
 export default BasketWrapper;
