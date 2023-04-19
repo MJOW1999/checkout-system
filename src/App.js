@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { calculatePrices } from "./app/slices/basketSlice";
-import "./App.css";
-import BasketItem from "./components/BasketItem";
+import BasketWrapper from "./components/BasketWrapper";
+import Navbar from "./components/Navbar";
 
 function App() {
   const { basketItems } = useSelector((state) => state.basket);
@@ -14,22 +14,8 @@ function App() {
 
   return (
     <main>
-      <section>
-        {basketItems?.map((item) => {
-          return (
-            <BasketItem
-              key={item.id}
-              id={item.id}
-              img={item.img}
-              name={item.name}
-              itemsForSpecial={item.itemsForSpecial}
-              regular_price={item.regular_price}
-              special_price={item.special_price}
-              totalBasket={item.totalBasket}
-            />
-          );
-        })}
-      </section>
+      <Navbar />
+      <BasketWrapper />
     </main>
   );
 }
