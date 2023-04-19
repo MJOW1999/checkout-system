@@ -1,3 +1,8 @@
+import apples from "./images/apples.jpg";
+import bananas from "./images/bananas.jpg";
+import cucumbers from "./images/cucumbers.jpg";
+import dates from "./images/dates.jpg";
+
 const availableItems = [
   {
     id: 1,
@@ -5,7 +10,8 @@ const availableItems = [
     regular_price: 0.5,
     special_price: 1.3,
     itemsForSpecial: 3,
-    img: "",
+    img: apples,
+    totalBasket: 0,
   },
   {
     id: 2,
@@ -13,19 +19,22 @@ const availableItems = [
     regular_price: 0.3,
     special_price: 0.45,
     itemsForSpecial: 2,
-    img: "",
+    img: bananas,
+    totalBasket: 0,
   },
   {
     id: 3,
     name: "Cucumber",
     regular_price: 0.2,
-    img: "",
+    img: cucumbers,
+    totalBasket: 0,
   },
   {
     id: 4,
     name: "Date",
     regular_price: 0.15,
-    img: "",
+    img: dates,
+    totalBasket: 0,
   },
 ];
 

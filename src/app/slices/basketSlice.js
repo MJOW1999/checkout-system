@@ -7,7 +7,7 @@ const initialState = {
   totalPrice: 0,
 };
 
-const getPrice = ({ count, regular_price, special_price, itemsForSpecial }) => {
+const getPrice = (count, regular_price, special_price, itemsForSpecial) => {
   let numSpecial = Math.floor(count / itemsForSpecial);
   let numRegular = count % itemsForSpecial;
   return numSpecial * special_price + numRegular * regular_price;
@@ -26,30 +26,30 @@ const basketSlice = createSlice({
       const basketItem = state.basketItems.find(
         (item) => item.id === action.payload.id
       );
-      basketItem.totalItems++;
+      basketItem.totalBasket++;
     },
     decrease: (state, action) => {
       const basketItem = state.basketItems.find(
         (item) => item.id === action.payload.id
       );
-      basketItem.totalItems--;
+      basketItem.totalBasket--;
     },
     calculatePrices: (state) => {
       let totalItems = 0;
       let totalPrice = 0;
       state.basketItems.forEach((item) => {
-        totalItems += item.totalItems;
-        totalPrice += item.special_price
+        totalItems += item.totalBasket;
+        totalPrice += item?.special_price
           ? getPrice(
-              totalItems,
+              item.totalBasket,
               item.regular_price,
               item.special_price,
               item.itemsForSpecial
             )
-          : totalItems * item.regular_price;
+          : item.totalBasket * item.regular_price;
       });
       state.totalItems = totalItems;
-      state.totalPrice = totalPrice;
+      state.totalPrice = Number(totalPrice.toFixed(2));
     },
   },
 });
