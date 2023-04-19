@@ -1,9 +1,11 @@
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import BasketItem from "./BasketItem";
-import { useSelector } from "react-redux";
+import { clearBasket } from "../app/slices/basketSlice";
 
 const BasketWrapper = () => {
   const { basketItems, totalPrice } = useSelector((state) => state.basket);
+  const dispatch = useDispatch();
 
   return (
     <Wrapper>
@@ -33,7 +35,9 @@ const BasketWrapper = () => {
             Total: <span>£{totalPrice.toFixed(2)}</span>
           </BasketTotal>
         </article>
-        <article></article>
+        <ClearButton onClick={() => dispatch(clearBasket())}>
+          Clear Basket
+        </ClearButton>
       </Footer>
     </Wrapper>
   );
@@ -63,6 +67,22 @@ const BasketTotal = styled.h4`
   justify-content: space-between;
   margin-top: 1rem;
   font-size: 2.5vmax;
+`;
+
+const ClearButton = styled.button`
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: #8b0000;
+  border: 1px solid #8b0000;
+  margin-top: 1rem;
+  font-size: 2vmax;
+  border-radius: 5px;
+
+  &:hover {
+    background: lightyellow;
+    color: #8b0000;
+    border-color: red;
+  }
 `;
 
 export default BasketWrapper;

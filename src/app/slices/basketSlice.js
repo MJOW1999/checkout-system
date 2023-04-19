@@ -17,9 +17,12 @@ const basketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
-    removeItem: (state, action) => {
-      const itemId = action.payload;
-      state.basketItems = state.basketItems.find((item) => item.id !== itemId);
+    clearBasket: (state) => {
+      state.basketItems.forEach((item) => {
+        item.totalBasket = 0;
+      });
+      state.totalItems = 0;
+      state.totalPrice = 0;
     },
     increase: (state, action) => {
       // Find the item that has been increased
@@ -32,7 +35,9 @@ const basketSlice = createSlice({
       const basketItem = state.basketItems.find(
         (item) => item.id === action.payload.id
       );
-      basketItem.totalBasket--;
+      basketItem.totalBasket > 0
+        ? basketItem.totalBasket--
+        : (basketItem.totalBasket = 0);
     },
     calculatePrices: (state) => {
       let totalItems = 0;
@@ -54,7 +59,7 @@ const basketSlice = createSlice({
   },
 });
 
-export const { removeItem, increase, decrease, calculatePrices } =
+export const { clearBasket, increase, decrease, calculatePrices } =
   basketSlice.actions;
 
 export default basketSlice.reducer;

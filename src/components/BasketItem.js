@@ -4,7 +4,7 @@ import {
   ChevronUpIcon as ChevronUp,
   ChevronDownIcon as ChevronDown,
 } from "@heroicons/react/24/solid";
-import { removeItem, increase, decrease } from "../app/slices/basketSlice";
+import { increase, decrease } from "../app/slices/basketSlice";
 
 const BasketItem = ({
   id,
@@ -21,26 +21,17 @@ const BasketItem = ({
     <BasketArticle>
       <ProductImage src={img} alt={name} />
       <section>
-        <h4>{name}</h4>
+        <ProductName>{name}</ProductName>
         <ItemPrice>Price: £{regular_price.toFixed(2)}</ItemPrice>
         {itemsForSpecial && special_price && (
           <SpecialOffer>
             Today only! Get {itemsForSpecial} for £{special_price.toFixed(2)}!
           </SpecialOffer>
         )}
-        {/* remove button */}
-        <RemoveButton
-          onClick={() => {
-            dispatch(removeItem(id));
-          }}
-        >
-          Remove
-        </RemoveButton>
       </section>
       <AmountWrapper>
         {/* increase amount */}
         <AmountButton
-          className="amount-btn"
           onClick={() => {
             dispatch(increase({ id }));
           }}
@@ -48,10 +39,9 @@ const BasketItem = ({
           <ChevronUp />
         </AmountButton>
         {/* amount */}
-        <p className="amount">{totalBasket}</p>
+        <Amount>{totalBasket}</Amount>
         {/* decrease amount */}
         <AmountButton
-          className="amount-btn"
           onClick={() => {
             dispatch(decrease({ id }));
           }}
@@ -69,7 +59,7 @@ const BasketArticle = styled.article`
   grid-template-columns: auto 1fr auto;
   grid-column-gap: 1.5rem;
   margin: 1.5rem 0;
-  width: 50vw;
+  min-width: 50vw;
 `;
 
 const ProductImage = styled.img`
@@ -79,23 +69,19 @@ const ProductImage = styled.img`
   border: 1px solid black;
 `;
 
+const ProductName = styled.h4`
+  font-size: 2vmax;
+`;
+
 const SpecialOffer = styled.h5`
   color: #dd4124;
+  font-size: 1.25vmax;
   font-style: italic;
 `;
 
 const ItemPrice = styled.h4`
   color: #34568b;
-`;
-
-const RemoveButton = styled.button`
-  color: #c3447a;
-  cursor: pointer;
-  font-size: 0.85rem;
-  background: transparent;
-  border: none;
-  margin-top: 0.375rem;
-  transition: all 0.3s linear;
+  font-size: 1.5vmax;
 `;
 
 const AmountWrapper = styled.section`
@@ -105,13 +91,17 @@ const AmountWrapper = styled.section`
 `;
 
 const AmountButton = styled.button`
-  width: 24px;
+  width: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
 
   &:hover {
-    color: pink;
+    color: purple;
   }
+`;
+
+const Amount = styled.p`
+  font-size: 20px;
 `;
 export default BasketItem;

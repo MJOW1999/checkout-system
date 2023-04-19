@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { calculatePrices } from "./app/slices/basketSlice";
 import BasketWrapper from "./components/BasketWrapper";
@@ -13,11 +14,15 @@ function App() {
   }, [basketItems, dispatch]);
 
   return (
-    <main>
+    <Main>
       <Navbar />
       <BasketWrapper />
-    </main>
+    </Main>
   );
 }
+
+const Main = styled.main`
+  background: mintcream;
+`;
 
 export default App;
