@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const totalItems = useSelector((state) => state.basket.totalItems);
-  console.log(totalItems);
+
   return (
     <Nav>
       <NavCenter>
