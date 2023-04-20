@@ -9,7 +9,9 @@ const BasketWrapper = () => {
 
   const checkout = () => {
     const checkoutPopup = window.confirm(
-      `Your final total is £${totalPrice}. Press OK to checkout, or Cancel to continue shopping.`
+      `Your final total is £${totalPrice.toFixed(
+        2
+      )}. Press OK to checkout, or Cancel to continue shopping.`
     );
     if (checkoutPopup) {
       dispatch(clearBasket());
