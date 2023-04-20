@@ -80,7 +80,7 @@ const BasketTotal = styled.h4`
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  font-size: (16px, 2.5vmax);
+  font-size: max(16px, 2.5vmax);
 `;
 
 const ButtonWrapper = styled.article`
