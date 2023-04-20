@@ -53,7 +53,7 @@ const Wrapper = styled.section`
 `;
 
 const HeaderTitle = styled.h2`
-  font-size: 2vmax;
+  font-size: max(14px, 2vmax);
   text-decoration: underline;
   padding-bottom: 2vh;
 `;
@@ -66,7 +66,7 @@ const BasketTotal = styled.h4`
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  font-size: 2.5vmax;
+  font-size: (16px, 2.5vmax);
 `;
 
 const ClearButton = styled.button`
@@ -75,7 +75,7 @@ const ClearButton = styled.button`
   color: #8b0000;
   border: 1px solid #8b0000;
   margin-top: 1rem;
-  font-size: 2vmax;
+  font-size: (16px, 2vmax);
   border-radius: 5px;
 
   &:hover {

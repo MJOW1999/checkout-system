@@ -1,7 +1,7 @@
-import apples from "./images/apples.jpg";
-import bananas from "./images/bananas.jpg";
-import cucumbers from "./images/cucumbers.jpg";
-import dates from "./images/dates.jpg";
+import apples from "./images/apples.webp";
+import bananas from "./images/bananas.webp";
+import cucumbers from "./images/cucumbers.webp";
+import dates from "./images/dates.webp";
 
 const availableItems = [
   {

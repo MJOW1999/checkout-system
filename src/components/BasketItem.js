@@ -19,7 +19,7 @@ const BasketItem = ({
 
   return (
     <BasketArticle>
-      <ProductImage src={img} alt={name} />
+      <ProductImage src={img} alt={name} loading="lazy" />
       <section>
         <ProductName>{name}</ProductName>
         <ItemPrice>Price: £{regular_price.toFixed(2)}</ItemPrice>
@@ -32,6 +32,7 @@ const BasketItem = ({
       <AmountWrapper>
         {/* increase amount */}
         <AmountButton
+          aria-label={`Increase ${name}s`}
           onClick={() => {
             dispatch(increase({ id }));
           }}
@@ -42,6 +43,7 @@ const BasketItem = ({
         <Amount>{totalBasket}</Amount>
         {/* decrease amount */}
         <AmountButton
+          aria-label={`Decrease ${name}s`}
           onClick={() => {
             dispatch(decrease({ id }));
           }}
@@ -69,19 +71,19 @@ const ProductImage = styled.img`
   border: 1px solid black;
 `;
 
-const ProductName = styled.h4`
-  font-size: 2vmax;
+const ProductName = styled.h3`
+  font-size: max(16px, 2vmax);
 `;
 
 const SpecialOffer = styled.h5`
-  color: #dd4124;
-  font-size: 1.25vmax;
+  color: #9b2335;
+  font-size: max(12px, 1.25vmax);
   font-style: italic;
 `;
 
 const ItemPrice = styled.h4`
   color: #34568b;
-  font-size: 1.5vmax;
+  font-size: max(14px, 1.5vmax);
 `;
 
 const AmountWrapper = styled.section`
